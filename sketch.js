@@ -1,9 +1,10 @@
-var moveDirection = 3
 
 var ball = {
   x: 20,
   y: 200,
   size: 15,
+  xspeed: 4,
+  yspeed: 2,
 
   display: function () {
     // note that to access any of ball's properties, you must use dot notation, using the special keyword this
@@ -16,21 +17,21 @@ var ball = {
   },
 
   move: function () {
-    this.y += moveDirection; // this line is the same as: this.x = this.x + 1;
+    this.x += this.xspeed; // this line is the same as: this.x = this.x + 1;
+    this.y += this.yspeed; // this line is the same as: this.x = this.x + 1;
 
   },
 
   checkForBounce: function () {
-    if (this.y > height - this.size / 2) this.bounce();
-    if (this.y < 0 + this.size / 2) this.bounce();
+    if (this.x > width - this.size / 2 || this.x < 0 + this.size / 2)  {
+    this.xspeed = this.xspeed * -1;
+    };
+
+    if (this.y > height - this.size / 2 || this.y < 0 + this.size / 2) {
+    this.yspeed = this.yspeed * -1;
+    };
   },
 
-  bounce: function () {
-    // your code goes here; a hint: this will require making your own variable as well as defining this function
-    // another hint: notice that ball is defined using object literal notation
-    moveDirection = moveDirection * -1
-
-  }
 };
 
 var setup = function() { // setup is called only when the sketch starts
