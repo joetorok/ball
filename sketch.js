@@ -1,3 +1,6 @@
+
+
+
 var moveDirection = 3
 
 var ball = {
